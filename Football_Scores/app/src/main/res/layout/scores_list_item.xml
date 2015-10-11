@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/list_item"
     android:elevation="4dp"
     android:orientation="vertical">
@@ -23,7 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:contentDescription="@string/home_team" />
+                android:contentDescription="@string/home_team"
+                tools:src="@drawable/chelsea"/>
 
             <TextView
                 android:id="@+id/home_name"
@@ -73,7 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:contentDescription="@string/away_logo" />
+                android:contentDescription="@string/away_logo"
+                tools:src="@drawable/arsenal"/>
 
             <TextView
                 android:id="@+id/away_name"

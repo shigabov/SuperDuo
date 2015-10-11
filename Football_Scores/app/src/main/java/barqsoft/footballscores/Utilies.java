@@ -23,7 +23,7 @@ public class Utilies
             case SERIE_A : return c.getString(R.string.seria_a);
                     
             case PREMIER_LEAGUE : return c.getString(R.string.premier_league);
-            case CHAMP_LEAGUE : return c.getString(R.string.champ_l);
+            case CHAMP_LEAGUE : return c.getString(R.string.champions_league);
             case PRIMERA_DIVISION : return c.getString(R.string.primera);
             case BUNDESLIGA1 : return c.getString(R.string.bundesliga);
             case EREDIVISIE : return c.getString(R.string.eredivisie);
@@ -42,7 +42,7 @@ public class Utilies
             }
             else if(match_day == 7 || match_day == 8)
             {
-                return c.getString(R.string.first_round);
+                return c.getString(R.string.first_knockout_round);
             }
             else if(match_day == 9 || match_day == 10)
             {
@@ -50,11 +50,11 @@ public class Utilies
             }
             else if(match_day == 11 || match_day == 12)
             {
-                return c.getString(R.string.semifinal);
+                return c.getString(R.string.semi_final);
             }
             else
             {
-                return c.getString(R.string.final1);
+                return c.getString(R.string.final_text);
             }
         }
         else
