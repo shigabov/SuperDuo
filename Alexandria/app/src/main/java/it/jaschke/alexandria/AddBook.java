@@ -24,6 +24,7 @@ import android.widget.Toast;
 import it.jaschke.alexandria.data.AlexandriaContract;
 import it.jaschke.alexandria.services.BookService;
 import it.jaschke.alexandria.services.DownloadImage;
+import it.jaschke.alexandria.services.SimpleScannerActivity;
 import it.jaschke.alexandria.services.Utility;
 
 
@@ -32,6 +33,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
     private final String LOG_TAG = "alexandria";
     private EditText ean;
     private final int LOADER_ID = 1;
+    private final int RES_CODE = 0;
     private View rootView;
     private final String EAN_CONTENT = "eanContent";
     private static final String SCAN_FORMAT = "scanFormat";
@@ -90,6 +92,9 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
 
         });
 
+
+
+
         rootView.findViewById(R.id.scan_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,8 +113,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
                 //Once we have an ISBN, start a book intent
 
 
-                restartLoader();
-
+                launchSimpleActivity();
 
             }
         });
@@ -145,6 +149,23 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
         getLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
+    public void launchSimpleActivity() {
+        Intent intent = new Intent(getActivity(), SimpleScannerActivity.class);
+        startActivityForResult(intent, RES_CODE);
+    };
+
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent data) {
+        if (requestCode == RES_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                clearFields();
+
+                //sort_by = data.getStringExtra("FORMAT");
+                EditText et = (EditText) getActivity().findViewById(R.id.ean);
+                et.setText(data.getStringExtra("CONTENTS"));
+            }
+        }
+    }
     @Override
     public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, Bundle args) {
         //ean = (EditText) getActivity().findViewById(R.id.ean);
