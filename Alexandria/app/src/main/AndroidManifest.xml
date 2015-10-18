@@ -34,7 +34,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".services.SimpleScannerActivity"
+            android:name=".BarcodeScannerActivity"
             android:label="@string/title_activity_scan">
 
         </activity>
